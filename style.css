@@ -1,6 +1,10 @@
 body {
   width: 90%;
   margin: 0 auto;
+  background-color: #ddd;
+}
+h1 {
+  text-align: center;
 }
 .group {
   border-bottom: 1px solid black;
@@ -14,7 +18,7 @@ table {
 }
 
 td {
-  width: 120px;
+  width: 150px;
   border: 1px solid black;
   text-align: center;
 }

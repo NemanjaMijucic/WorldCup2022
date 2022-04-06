@@ -115,7 +115,7 @@ function gameMatch(team1, team2, round) {
   let groupresult;
   // //rendering data into HTML document
   groupresult = `
-    <p>${round} ${team1.name} ${score} : ${score1}  ${team2.name} <p>
+    <p><strong>${round}</strong> ${team1.name} ${score} : ${score1}  ${team2.name} <p>
      `;
   groupresults.push(groupresult);
 }
@@ -144,7 +144,7 @@ function makeTable(groupRanking) {
   groupRanking.forEach((team) => {
     tablerow += `
     <tr>
-    <td>${team.name} ${team.rank}</td>
+    <td>${team.name} (${team.rank})</td>
     <td>${team.win} ${team.draw} ${team.loss}</td>
     <td>${team.goalsScored}:${team.goalsConcided}</td>
     <td>${team.points}</td>
@@ -162,11 +162,11 @@ function makeTable(groupRanking) {
 function groupStage(arr) {
   pairs.forEach((pair, index) => {
     if (index === 0 || index === 1) {
-      round = "Round 1";
+      round = "Round 1:";
     } else if (index === 2 || index === 3) {
-      round = "Round 2";
+      round = "Round 2:";
     } else {
-      round = " Round 3";
+      round = " Round 3:";
     }
     gameMatch(arr[pair[0]], arr[pair[1]], round);
   });
