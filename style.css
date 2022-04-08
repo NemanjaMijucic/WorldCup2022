@@ -1,7 +1,7 @@
 body {
   width: 90%;
   margin: 0 auto;
-  background-color: #ddd;
+  background-color: rgb(212, 212, 212);
 }
 h1 {
   text-align: center;
@@ -25,4 +25,18 @@ td {
 
 .winner {
   font-size: 24px;
+}
+
+.footer {
+  margin-top: 15px;
+}
+
+button {
+  height: 30px;
+  padding: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #aaa;
 }

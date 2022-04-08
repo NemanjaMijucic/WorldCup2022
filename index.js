@@ -1,6 +1,7 @@
 const groupStageContainer = document.querySelector(".groupstage");
 const playOffDiv = document.querySelector(".playoff");
 const winnerDiv = document.querySelector(".winner");
+const newWC = document.getElementById("new");
 let groupresults = [];
 let tablerow = "";
 let playOffresult = "";
@@ -15,6 +16,7 @@ let leftSideQuoterFinals = [];
 let rightSideQuoterFinals = [];
 let leftSideSemiFinals = [];
 let rightSideSemiFinals = [];
+let winnerOfWC = [];
 
 //function for scored goals
 function teamGoalsScored() {
@@ -159,7 +161,7 @@ function makeTable(groupRanking) {
 }
 
 //function for playing all round matches in group stage
-function groupStage(arr) {
+function groupStage(arr, groupName) {
   pairs.forEach((pair, index) => {
     if (index === 0 || index === 1) {
       round = "Round 1:";
@@ -172,41 +174,45 @@ function groupStage(arr) {
   });
 
   groupRank(arr);
-  makeScoreSheet();
+  makeScoreSheet(groupName);
 }
 
-function makeScoreSheet() {
+function makeScoreSheet(groupName) {
   const groupHolder = document.createElement("div");
+  const groupNameHolder = document.createElement("h3");
+  groupNameHolder.innerText = groupName;
+  groupHolder.appendChild(groupNameHolder);
   groupHolder.classList.add("group");
   groupresults.forEach((res) => {
     groupHolder.innerHTML += res;
   });
+
   groupStageContainer.appendChild(groupHolder);
 
   groupresults = [];
 }
 
-groupStage(groupA);
+groupStage(groupA, "Group A");
 makeTable(groupA);
 
-groupStage(groupB);
+groupStage(groupB, "Group B");
 makeTable(groupB);
 
-groupStage(groupC);
+groupStage(groupC, "Group C");
 makeTable(groupC);
-groupStage(groupD);
+groupStage(groupD, "Group D");
 makeTable(groupD);
-groupStage(groupE);
+groupStage(groupE, "Group E");
 makeTable(groupE);
-groupStage(groupF);
+groupStage(groupF, "Group F");
 makeTable(groupF);
-groupStage(groupG);
+groupStage(groupG, "Group G");
 makeTable(groupG);
-groupStage(groupH);
+groupStage(groupH, "Group H");
 makeTable(groupH);
 
 //PLAYOFF
-
+//function for deciding winner in playoff matches
 function gameMatchPlayOff(team1, team2, phase, arr) {
   let score = teamGoalsScored();
   let score1 = teamGoalsScored();
@@ -219,11 +225,12 @@ function gameMatchPlayOff(team1, team2, phase, arr) {
     arr.push(team2);
   }
 
-  playOffresult += `<p>${phase} ${team1.name} ${score} : ${score1}  ${team2.name} <p>`;
+  playOffresult += `<p><strong>${phase}</strong>  ${team1.name} ${score} : ${score1}  ${team2.name} <p>`;
 
   playOffDiv.innerHTML = playOffresult;
 }
 
+//function for making fixtures in playOff
 function playoffGames(playOffTeams) {
   playOffTeams.forEach((team) => {
     team.groupIndex % 2 === 0 ? leftSide.push(team) : rightSide.push(team);
@@ -265,8 +272,14 @@ function playoffGames(playOffTeams) {
     );
   }
 
-  0.5 > Math.random() ? (winner = finals[1]) : (winner = finals[0]);
-  winnerDiv.innerText = `WINNER: ${winner.name}`;
+  gameMatchPlayOff(finals[0], finals[1], "Final", winnerOfWC);
+
+  console.log(winnerOfWC);
+  winnerDiv.innerText = `WINNER OF WC2022: ${winnerOfWC[0].name}`;
 }
 
 playoffGames(playOffTeams);
+
+newWC.addEventListener("click", function () {
+  location.reload();
+});
