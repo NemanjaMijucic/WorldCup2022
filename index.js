@@ -18,7 +18,6 @@ import {
   const winnerDiv = document.querySelector(".winner");
   const newWC = document.getElementById("new");
 
-  //let tableFrame;
   let groupResults = [];
   let playOffResult = "";
   let playOffTeams = [];
@@ -83,7 +82,6 @@ import {
         return b.goalsScored - a.goalsScored;
       }
     });
-    // CHECK THIS ***
 
     //making array for playoffs (1/8, 1/4, 1/2)
     const groupWinners = groupRanking.slice(0, 2);
@@ -122,10 +120,7 @@ import {
     groupResults.forEach((res) => {
       groupHolder.innerHTML += res;
     });
-    // let tableFrame = document.createElement("table");
-    // tableFrame.innerHTML =
-    //   "<tr> <td>Team</td>  <td>WDL</td> <td>GOALS</td> <td>Points</td> </tr> ";
-    //groupHolder.appendChild(tableFrame);
+
     groupStageContainer.appendChild(groupHolder);
 
     groupResults = [];

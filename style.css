@@ -6,9 +6,6 @@ body {
 h1 {
   text-align: center;
 }
-.group {
-  /* border-bottom: 1px solid black; */
-}
 
 table {
   margin-top: 10px;
@@ -34,6 +31,7 @@ td {
 }
 
 button {
+  border-radius: 5px;
   height: 30px;
   padding: 5px;
 }
