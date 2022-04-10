@@ -45,6 +45,7 @@ import {
     if (homeTeamScore > awayTeamScore) {
       homeTeam.points += 3;
       homeTeam.win += 1;
+      awayTeam.loss += 1;
     } else if (homeTeamScore === awayTeamScore) {
       homeTeam.points += 1;
       awayTeam.points += 1;
@@ -53,6 +54,7 @@ import {
     } else {
       awayTeam.points += 3;
       awayTeam.win += 1;
+      homeTeam.loss += 1;
     }
 
     homeTeam.goalDifference = homeTeam.goalsScored - homeTeam.goalsConceded;
