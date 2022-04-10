@@ -18,6 +18,7 @@ import {
   const winnerDiv = document.querySelector(".winner");
   const newWC = document.getElementById("new");
 
+  //let tableFrame;
   let groupResults = [];
   let playOffResult = "";
   let playOffTeams = [];
@@ -104,10 +105,12 @@ import {
   </tr>`;
     });
 
-    const table = document.createElement("table");
-    table.innerHTML = tablerow;
-    groupStageContainer.appendChild(table);
+    let tableFrame = document.createElement("table");
+    tableFrame.innerHTML =
+      "<tr> <td>Team</td>  <td>WDL</td> <td>GOALS</td> <td>Points</td> </tr> ";
+    tableFrame.insertAdjacentHTML("beforeend", tablerow);
     tablerow = "";
+    groupStageContainer.appendChild(tableFrame);
   }
 
   function makeScoreSheet(groupName) {
@@ -119,7 +122,10 @@ import {
     groupResults.forEach((res) => {
       groupHolder.innerHTML += res;
     });
-
+    // let tableFrame = document.createElement("table");
+    // tableFrame.innerHTML =
+    //   "<tr> <td>Team</td>  <td>WDL</td> <td>GOALS</td> <td>Points</td> </tr> ";
+    //groupHolder.appendChild(tableFrame);
     groupStageContainer.appendChild(groupHolder);
 
     groupResults = [];

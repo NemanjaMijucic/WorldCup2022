@@ -1,13 +1,13 @@
 body {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
-  background-color: rgb(212, 212, 212);
+  background-color: rgb(219, 219, 219);
 }
 h1 {
   text-align: center;
 }
 .group {
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
 }
 
 table {
@@ -19,6 +19,7 @@ table {
 
 td {
   width: 150px;
+  padding: 2px;
   border: 1px solid black;
   text-align: center;
 }
